@@ -17,7 +17,7 @@ import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 /**
  * Created by FochMaiden
  */
-public class SiteTest {
+public class SeleniumSiteTest {
 
         private static WebDriver browser;
 

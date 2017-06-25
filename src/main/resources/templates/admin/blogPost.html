@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${blogPost.title}">View Post</title>
 </head>
+
 <body>
-$END$
+
+<header th:replace="layout :: site-header" />
+
+<section class="banner-section" th:class="banner-section"  >
+
+</section>
+<section class="post-content-section">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+
+                <h1 class="text-center" th:text="${blogPost.title}">post Title goes here</h1>
+                <ul class="list-inline text-center">
+                    <li >By Gosia |</li>
+                    <li th:text="${#dates.format(blogPost.date, 'dd-MMM-yyyy')}">Date</li>
+                </ul>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <p class="lead" th:text="${blogPost.text}"> content </p>
+                <p class="lead">Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+                <div class="image-block">
+                    <img src="https://static.pexels.com/photos/268455/pexels-photo-268455.jpeg" class="img-responsive" >
+                </div>
+            </div>
+
+            <div class="col-lg-3  col-md-3 col-sm-12">
+                <div class="well">
+                    <ul class="list-inline">
+                        <li>
+                            <a><h3>All posts</h3>Made with <i class="glyphicon glyphicon-heart-empty"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer th:replace="layout :: site-footer" />
+
 </body>
+
 </html>

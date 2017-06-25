@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(userName);

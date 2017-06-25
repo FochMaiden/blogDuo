@@ -20,12 +20,11 @@ public class BlogPost implements Serializable {
     @Column(name = "blogPost_id")
     private int id;
     @Column(name = "title")
-    @NotEmpty(message = "Proszę podać Tytuł")
+    @NotEmpty(message = "Proszę podać tytuł")
     private String title;
-
     @Column(name = "text")
+    @NotEmpty(message = "Proszę podać text")
     private String text;
-
     @Column(name = "time")
     private Date date= new Date();
 

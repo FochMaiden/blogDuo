@@ -20,8 +20,6 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-
-
     @Autowired
     private UserService userService;
 

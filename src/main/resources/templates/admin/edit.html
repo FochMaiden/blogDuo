@@ -11,10 +11,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/admin/addBlogPost}"
+
+
+
+            <form autocomplete="off" action="#" th:action="@{/admin/edit}"
                   th:object="${blogPost}" method="post" class="form-horizontal"
                   role="form">
-                <h2>Registration Form</h2>
+
+
+
+                <h2>Edit post</h2>
                 <div class="form-group">
                     <div class="col-sm-9">
                         <input id="title" type="text" th:field="*{title}" placeholder="Title"
@@ -31,19 +37,9 @@
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <select id="text" class="form-control">
-                            <option>nic</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
                         <button type="submit" class="btn btn-primary btn-block" id="post">Add post</button>
                     </div>
                 </div>
-
-                <span class="successMSG" th:utext="${successMessage}"></span>
 
             </form>
         </div>

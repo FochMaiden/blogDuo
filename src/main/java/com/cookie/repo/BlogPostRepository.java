@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository("blogRepo")
 public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
     BlogPost findBlogPostByTitle(String blogPost);
+
 }

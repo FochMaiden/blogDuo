@@ -2,47 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="layout :: site-head">
+    <title>Blog o  ciastku</title>
 </head>
-
 <body>
-<img th:src="@{/images/cover2.jpg}" class="image-fluid" width="100%">
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-
-
-                <li>
-                    <form class="navbar-form navbar-left" th:action="@{/logout}" method="get">
-                        <button class="btn btn-default" name="registration"
-                                type="Submit">Logout</button>
-                    </form>
-                </li>
-
-            </ul>
-        </div>
-
-    </div>
-</nav>
+<header th:replace="layout :: site-header" />
 
 <div class="container">
 
     <div class="panel-group" style="margin-top:40px">
+
         <div class="panel panel-primary">
             <div class="panel-heading" id="name">
                 <span th:utext="${userName}" > </span>
             </div>
             <p class="admin-message-text text-center" th:utext="${adminMessage}">  </p>
+            <img th:src="@{/images/mercy.gif}" class="image-fluid" width="50%" >
         </div>
+
+
     </div>
 
 </div>

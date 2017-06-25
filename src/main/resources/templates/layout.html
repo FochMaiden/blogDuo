@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org"> <head th:fragment="site-head">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+
+    <meta th:include="this :: head" th:remove="tag"/>
 </head>
-<body>
-$END$
-</body>
-</html>
+<body><header th:fragment="site-header">
+    <header>
+        <nav class="navbar navbar-inverse  navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" th:href="@{/admin/home}" >Ciasteczka</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a id="posty" th:href="@{/admin/blogPosts}"> Posty </a>
+                        </li>
+                        <li>
+                            <a id="nowypost" th:href="@{/admin/addBlogPost}">Nowy Post</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="navbar-form navbar-left" id="logout" th:action="@{/logout}" method="get">
+                                <button class="btn btn-default" name="registration"
+                                        type="Submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+</header>
+
+    <footer th:fragment="site-footer">
+        &copy; Ciasteczka, 2017
+    </footer>
+
+</body></html>
