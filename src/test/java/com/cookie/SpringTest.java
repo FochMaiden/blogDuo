@@ -2,6 +2,7 @@ package com.cookie;
 
 import com.cookie.model.BlogPost;
 import com.cookie.service.BlogPostService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ public class SpringTest {
     }
 
     @Test
-    public void testFindAllBlogPosts(){
+    public void testFindAllBlogPostsCheckIfAmountOfPostAreMatching(){
         List<BlogPost> posts = blogPostService.findAll();
+       Assert.assertEquals(3, posts.size());
 
     }
 }

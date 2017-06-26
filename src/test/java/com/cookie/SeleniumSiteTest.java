@@ -27,7 +27,7 @@ public class SeleniumSiteTest {
 
         @BeforeClass
         public static void setup() {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Gosia\\Downloads\\chromedriver.exe");// mac - /Users/FochMaiden/Downloads/chromedriver
+            System.setProperty("webdriver.chrome.driver", "/Users/FochMaiden/Downloads/chromedriver");// mac C:\Users\Gosia\Downloads\chromedriver.exe-
                 browser = new ChromeDriver();
                 browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
