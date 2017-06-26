@@ -19,8 +19,11 @@
                 <h1 class="text-center" id="welcome" th:text="${userName}">h</h1>
             </div>
 
+
             <div class="col-lg-9 col-md-9 col-sm-12">
                 <p class="lead" th:utext="${adminMessage}"> tak </p>
+
+                <span class="successMSG" th:utext="${message}"></span>
 
                 <div class="image-block">
                     <img th:src="@{/images/mercy.gif}" class="img-responsive center-block" width="50%"  >

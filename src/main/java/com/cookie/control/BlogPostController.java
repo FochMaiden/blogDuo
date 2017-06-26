@@ -2,7 +2,7 @@ package com.cookie.control;
 
 import com.cookie.dto.BlogPostDTO;
 import com.cookie.dto.BlogPostMapper;
-import com.cookie.integration.BlogPost;
+import com.cookie.model.BlogPost;
 import com.cookie.service.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +45,7 @@ public class BlogPostController {
         BlogPost blogPostExists = blogPostService.findBlogPostByTitle(blogPost.getTitle());
         if (blogPostExists != null) {
             bindingResult.rejectValue("title", "error.title", "Post o danym tytule już istnieje");
+            modelAndView.addObject("error", "Post o danym tytule już istnieje");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("admin/addBlogPost");
@@ -69,7 +70,6 @@ public class BlogPostController {
     @RequestMapping(value = "admin/blogPost/delete", method = RequestMethod.GET)
     public ModelAndView deletePost(@RequestParam("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView();
-
         blogPostService.deleteById(id);
         modelAndView.addObject("message", "Usunieto posta");
         modelAndView.setViewName("redirect:/admin/blogPosts");
@@ -95,7 +95,7 @@ public class BlogPostController {
         if(action.equals("save")){
             BlogPost blogPost = BlogPostMapper.getBlogPost(blogPostDTO);
             blogPostService.edit(blogPost);
-            message = "Blog post" + blogPost.getId() + "został pomyślnie zedytowany";
+            message = "został pomyślnie zedytowany";
             modelAndView.addObject("blogPost", blogPost);
             modelAndView.addObject("message", message);
         }

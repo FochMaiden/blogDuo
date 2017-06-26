@@ -27,24 +27,21 @@ public class SeleniumSiteTest {
 
         @BeforeClass
         public static void setup() {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Gosia\\Downloads\\chromedriver.exe");// mac - /Users/FochMaiden/Downloads/chromedriver
+            System.setProperty("webdriver.chrome.driver", "/Users/FochMaiden/Downloads/chromedriver");// mac - C:\Users\Gosia\Downloads\chromedriver.exe
                 browser = new ChromeDriver();
                 browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
 
-        @Test
-        public void loginTest() throws Exception {
+        @Before
+        @Ignore
+        public void login(){
             browser.get("http://localhost:8080");
             browser.findElement(By.id("login")).click();
             browser.findElement(By.id("email")).sendKeys("gosia.xq@gmail.com");
             browser.findElement(By.id("password")).sendKeys("qweqwe123");
             browser.findElement(By.id("submit")).click();
+    }
 
-            File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("c:\\tmp\\loginTest.png"));
-
-            assertEquals("Welcome Gosia", browser.findElement(By.id("welcome")).getText());
-        }
 
         @Test
         public void failedLoginTest() throws Exception{
@@ -62,13 +59,7 @@ public class SeleniumSiteTest {
 
         @Test
         public void logoutTest() throws Exception {
-            browser.get("http://localhost:8080");
-            browser.findElement(By.id("login")).click();
-
-            browser.findElement(By.id("email")).sendKeys("gosia.xq@gmail.com");
-            browser.findElement(By.id("password")).sendKeys("qweqwe123");
-            browser.findElement(By.id("submit")).click();
-            browser.findElement(By.id("logout")).click();
+                        browser.findElement(By.id("logout")).click();
 
             File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File("c:\\tmp\\logoutTest.png"));
@@ -77,7 +68,9 @@ public class SeleniumSiteTest {
 
         }
 
+
         @Test
+        @Ignore
         public void registerTest() throws Exception{
             browser.get("http://localhost:8080");
             browser.findElement(By.id("register")).click();
@@ -94,6 +87,7 @@ public class SeleniumSiteTest {
 
 
     @Test
+@Ignore
     public void failedRegisterTest() throws Exception{
         browser.get("http://localhost:8080");
         browser.findElement(By.id("register")).click();
@@ -103,7 +97,7 @@ public class SeleniumSiteTest {
         browser.findElement(By.id("submit")).click();
 
         File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scrFile, new File("c:\\tmp\\failedRegisterTest.png"));
+        FileUtils.copyFile(scrFile, new File(""));
 
         assertEquals("Proszę podać prawidłowy Email",browser.findElement(By.className("validation-message")).getText() );
 
@@ -113,11 +107,7 @@ public class SeleniumSiteTest {
 
     @Test
     public void createBlogPost() throws Exception{
-        browser.get("http://localhost:8080");
-        browser.findElement(By.id("login")).click();
-        browser.findElement(By.id("email")).sendKeys("gosia.xq@gmail.com");
-        browser.findElement(By.id("password")).sendKeys("qweqwe123");
-        browser.findElement(By.id("submit")).click();
+
         browser.findElement(By.id("nowypost")).click();
         browser.findElement(By.id("title")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
         browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
@@ -130,20 +120,72 @@ public class SeleniumSiteTest {
     }
 
     @Test
-    public void deleteBlogPost() throws Exception{
-        browser.get("http://localhost:8080");
-        browser.findElement(By.id("login")).click();
-        browser.findElement(By.id("email")).sendKeys("gosia.xq@gmail.com");
-        browser.findElement(By.id("password")).sendKeys("qweqwe123");
-        browser.findElement(By.id("submit")).click();
-        browser.findElement(By.id("posty")).click();
+    public void createFailBlogPost() throws Exception{
 
-        browser.findElement(By.id("usus")).click();
+        browser.findElement(By.id("nowypost")).click();
+        browser.findElement(By.id("title")).sendKeys("a");
+        browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("post")).click();
+        browser.findElement(By.id("nowypost")).click();
+        browser.findElement(By.id("title")).sendKeys("a");
+        browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("post")).click();
 
         File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("c:\\tmp\\createBlogPost.png"));
 
-        assertEquals("Pomyślnie stworzono post",browser.findElement(By.className("successMSG")).getText() );
+        assertEquals("Post o danym tytule już istnieje",browser.findElement(By.className("error")).getText() );
+    }
+
+    @Test
+    public void deleteBlogPost() throws Exception{
+
+        browser.findElement(By.id("nowypost")).click();
+        browser.findElement(By.id("title")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("post")).click();
+        browser.findElement(By.id("posty")).click();
+        browser.findElement(By.id("usun")).click();
+        String url =  browser.getCurrentUrl();
+
+
+        assertEquals("http://localhost:8080/admin/blogPosts?message=Usunieto+posta",url);
+    }
+
+    @Test
+    public void editBlogPost() throws Exception{
+
+        browser.findElement(By.id("nowypost")).click();
+        browser.findElement(By.id("title")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("post")).click();
+        browser.findElement(By.id("posty")).click();
+
+        browser.findElement(By.id("edytuj")).click();
+        browser.findElement(By.id("save")).click();
+
+        String url =  browser.getCurrentUrl();
+
+
+        assertEquals("http://http://localhost:8080/admin/blogPosts?message=został+pomyślnie+zedytowany",url);
+    }
+
+    @Test
+    public void editCancelBlogPost() throws Exception{
+
+        browser.findElement(By.id("nowypost")).click();
+        browser.findElement(By.id("title")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
+        browser.findElement(By.id("post")).click();
+        browser.findElement(By.id("posty")).click();
+
+        browser.findElement(By.id("edytuj")).click();
+        browser.findElement(By.id("cancel")).click();
+
+        String url =  browser.getCurrentUrl();
+
+
+        assertEquals("http://localhost:8080/admin/blogPosts",url);
     }
 
 

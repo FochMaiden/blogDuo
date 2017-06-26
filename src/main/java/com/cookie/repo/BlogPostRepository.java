@@ -1,8 +1,7 @@
 package com.cookie.repo;
 
-import com.cookie.integration.BlogPost;
+import com.cookie.model.BlogPost;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository("blogRepo")
 public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
     BlogPost findBlogPostByTitle(String blogPost);
+
 
 }

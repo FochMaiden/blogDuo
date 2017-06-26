@@ -1,6 +1,6 @@
 package com.cookie.service;
 
-import com.cookie.integration.User;
+import com.cookie.model.User;
 
 /**
  * Created by FochMaiden

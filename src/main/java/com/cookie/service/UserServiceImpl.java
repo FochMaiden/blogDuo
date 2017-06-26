@@ -1,7 +1,7 @@
 package com.cookie.service;
 
-import com.cookie.integration.Role;
-import com.cookie.integration.User;
+import com.cookie.model.Role;
+import com.cookie.model.User;
 
 
 import com.cookie.repo.RoleRepository;

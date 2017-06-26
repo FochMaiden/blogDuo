@@ -1,4 +1,4 @@
-package com.cookie.integration;
+package com.cookie.model;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;

@@ -1,6 +1,6 @@
 package com.cookie.dto;
 
-import com.cookie.integration.BlogPost;
+import com.cookie.model.BlogPost;
 
 /**
  * Created by Gosia on 26.06.2017.

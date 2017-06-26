@@ -89,51 +89,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-maven-plugin</artifactId>
-			<version>4.0.5</version>
-		</dependency>
-		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-assert</artifactId>
 			<version>1.4</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>net.serenity-bdd.maven.plugins</groupId>
-			<artifactId>serenity-maven-plugin</artifactId>
-			<version>1.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>net.serenity-bdd</groupId>
-			<artifactId>serenity-jbehave</artifactId>
-			<version>1.26.0-rc.3</version>
-		</dependency>
-	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>3.1.2</version>
-				<executions>
-					<execution>
-						<id>run-stories-as-embeddables</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<includes>
-								<include>**/*Scenarios.java</include>
-							</includes>
-							<ignoreFailureInStories>true</ignoreFailureInStories>
-							<ignoreFailureInView>false</ignoreFailureInView>
-						</configuration>
-						<goals>
-							<goal>run-stories-as-embeddables</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
