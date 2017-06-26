@@ -1,6 +1,6 @@
 package com.cookie.repo;
 
-import com.cookie.model.User;
+import com.cookie.integration.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

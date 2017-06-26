@@ -1,4 +1,4 @@
-package com.cookie.model;
+package com.cookie.integration;
 
 import javax.persistence.*;
 

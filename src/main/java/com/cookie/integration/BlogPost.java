@@ -1,12 +1,10 @@
-package com.cookie.model;
+package com.cookie.integration;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by FochMaiden

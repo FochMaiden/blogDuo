@@ -1,7 +1,8 @@
 package com.cookie.repo;
 
-import com.cookie.model.BlogPost;
+import com.cookie.integration.BlogPost;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**

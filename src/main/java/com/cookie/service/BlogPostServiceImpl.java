@@ -1,6 +1,6 @@
 package com.cookie.service;
 
-import com.cookie.model.BlogPost;
+import com.cookie.integration.BlogPost;
 import com.cookie.repo.BlogPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

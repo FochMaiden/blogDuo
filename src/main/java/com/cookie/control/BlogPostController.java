@@ -2,10 +2,8 @@ package com.cookie.control;
 
 import com.cookie.dto.BlogPostDTO;
 import com.cookie.dto.BlogPostMapper;
-import com.cookie.model.BlogPost;
+import com.cookie.integration.BlogPost;
 import com.cookie.service.BlogPostService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.apache.maven.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by FochMaiden
@@ -75,7 +71,7 @@ public class BlogPostController {
         ModelAndView modelAndView = new ModelAndView();
 
         blogPostService.deleteById(id);
-
+        modelAndView.addObject("message", "Usunieto posta");
         modelAndView.setViewName("redirect:/admin/blogPosts");
         return modelAndView;
     }

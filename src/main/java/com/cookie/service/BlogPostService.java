@@ -1,6 +1,6 @@
 package com.cookie.service;
 
-import com.cookie.model.BlogPost;
+import com.cookie.integration.BlogPost;
 
 import java.util.List;
 

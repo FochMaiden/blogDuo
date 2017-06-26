@@ -1,4 +1,4 @@
-package com.cookie;
+package com.cookie.Site;
 
 
 import org.apache.commons.io.FileUtils;
@@ -27,7 +27,7 @@ public class SeleniumSiteTest {
 
         @BeforeClass
         public static void setup() {
-            System.setProperty("webdriver.chrome.driver", "/Users/FochMaiden/Downloads/chromedriver");// mac C:\Users\Gosia\Downloads\chromedriver.exe-
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Gosia\\Downloads\\chromedriver.exe");// mac - /Users/FochMaiden/Downloads/chromedriver
                 browser = new ChromeDriver();
                 browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
@@ -122,6 +122,23 @@ public class SeleniumSiteTest {
         browser.findElement(By.id("title")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
         browser.findElement(By.id("text")).sendKeys(RandomStringUtils.randomAlphanumeric(12));
         browser.findElement(By.id("post")).click();
+
+        File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("c:\\tmp\\createBlogPost.png"));
+
+        assertEquals("Pomyślnie stworzono post",browser.findElement(By.className("successMSG")).getText() );
+    }
+
+    @Test
+    public void deleteBlogPost() throws Exception{
+        browser.get("http://localhost:8080");
+        browser.findElement(By.id("login")).click();
+        browser.findElement(By.id("email")).sendKeys("gosia.xq@gmail.com");
+        browser.findElement(By.id("password")).sendKeys("qweqwe123");
+        browser.findElement(By.id("submit")).click();
+        browser.findElement(By.id("posty")).click();
+
+        browser.findElement(By.id("usus")).click();
 
         File scrFile = ((TakesScreenshot)browser).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("c:\\tmp\\createBlogPost.png"));
