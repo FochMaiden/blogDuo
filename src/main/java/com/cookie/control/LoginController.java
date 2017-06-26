@@ -66,7 +66,7 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName());
-        modelAndView.addObject("adminMessage", "Dostępne tylko dla Adminów ^,^");
+        modelAndView.addObject("adminMessage", "Gratulacje, zostałeś zarejestrowanym użytkownikiem");
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }

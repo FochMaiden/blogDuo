@@ -59,7 +59,6 @@
 			<version>1.9.21</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -94,6 +93,7 @@
 			<artifactId>jbehave-maven-plugin</artifactId>
 			<version>4.0.5</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>

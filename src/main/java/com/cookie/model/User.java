@@ -38,7 +38,7 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany
-    @JoinTable(name = "user_blogPost")
+    @JoinColumn(name = "user_blogPost")
     private Set<BlogPost> posts;
 
     public int getId() {

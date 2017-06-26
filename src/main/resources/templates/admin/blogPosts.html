@@ -34,7 +34,8 @@
                             <h4><small class="text-muted" th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">some date</small></h4>
                             <h4><small class="content" th:utext="${p.text}">post</small></h4>
 
-                           <a class="btn btn-danger" th:href="@{/admin/blogPost/delete (id=${p.id})}" >usun</a>
+                           <a class="btn btn-danger" th:href="@{/admin/blogPost/delete (id=${p.id})}" > Usuń </a>
+                            <a class="btn btn-info" data-th-href="@{/admin/editBlogPost (id=${p.id})}" > Edytuj </a>
 
                             <div class="row divider">
                                 <div class="col-sm-12"><hr></hr></div>

@@ -29,7 +29,7 @@ public class BlogPost implements Serializable {
     private Date date= new Date();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "blogPost_author")
     private User author;
 
     public int getId() {

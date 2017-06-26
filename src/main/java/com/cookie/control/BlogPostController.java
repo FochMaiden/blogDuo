@@ -1,5 +1,7 @@
 package com.cookie.control;
 
+import com.cookie.dto.BlogPostDTO;
+import com.cookie.dto.BlogPostMapper;
 import com.cookie.model.BlogPost;
 import com.cookie.service.BlogPostService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -74,27 +76,38 @@ public class BlogPostController {
 
         blogPostService.deleteById(id);
 
-        modelAndView.setViewName("admin/blogPosts");
+        modelAndView.setViewName("redirect:/admin/blogPosts");
         return modelAndView;
     }
 
-    @RequestMapping(value = "admin/blogPost/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/editBlogPost", method = RequestMethod.GET)
     public ModelAndView editPost(@RequestParam("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         BlogPost blogPost = blogPostService.findBlogPost(id);
-
-        modelAndView.addObject("blogPost", blogPost);
-        modelAndView.setViewName("admin/blogPost/edit");
+        BlogPostDTO blogPostDTO = BlogPostMapper.getBlogPostDTO(blogPost);
+        modelAndView.addObject("blogPostDTO", blogPostDTO);
+        modelAndView.setViewName("admin/editBlogPost");
         return modelAndView;
     }
 
-    @RequestMapping(value = "admin/blogPost/edit", method = RequestMethod.POST)
-    public ModelAndView editPost(@ModelAttribute BlogPost blogPost) {
-        ModelAndView modelAndView = new ModelAndView();
-        blogPostService.edit(blogPost);
+    @RequestMapping(value = "admin/editBlogPost", method = RequestMethod.POST)
+    public ModelAndView editPost(@ModelAttribute BlogPostDTO blogPostDTO,
+                                 @RequestParam(value = "action") String action) {
+        ModelAndView modelAndView = new ModelAndView("redirect:blogPosts");
+        String message = null;
 
-        modelAndView.addObject("blogPost", blogPost);
-        modelAndView.setViewName("admin/blogPost/edit");
+        if(action.equals("save")){
+            BlogPost blogPost = BlogPostMapper.getBlogPost(blogPostDTO);
+            blogPostService.edit(blogPost);
+            message = "Blog post" + blogPost.getId() + "został pomyślnie zedytowany";
+            modelAndView.addObject("blogPost", blogPost);
+            modelAndView.addObject("message", message);
+        }
+        if(action.equals("cancel")){
+            message = "Blog post" + blogPostDTO.getId() + "nie został zedytowny";
+        }
+
+
         return modelAndView;
     }
 

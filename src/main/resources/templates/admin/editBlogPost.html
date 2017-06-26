@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title>Blog o  ciastku</title>
+</head>
+<body>
+<header th:replace="layout :: site-header" />
+
+
+<section class="banner-section" th:class="banner-section"  >
+
+</section>
+<section class="post-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+                <h1 class="text-center" >Edytuj post</h1>
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-12">
+                <div class="full col-sm-9">
+                    <div class="row">
+
+                        <form autocomplete="off" action="#" th:action="@{/admin/editBlogPost}" data-th-object="${blogPostDTO}"
+                              method="post" class="form-horizontal" role="form">
+                            <h2>Edytuj post</h2>
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <input type="text" hidden="hidden" data-th-value="*{id}" data-th-field="*{id}" />
+                                    <input id="title" type="text" placeholder="title"  data-th-value="*{title}" data-th-field="*{title}"
+                                           class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <input id="text" type="text" data-th-value="*{text}" data-th-field="*{text}" placeholder="Text"
+                                           class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <button class="btn btn-success" type="submit" name="action" value="save" >save</button>
+
+                                    <button class="btn btn-warning" type="submit" name="action" value="cancel" >cancel</button>
+                                </div>
+                            </div>
+                            <span class="message" th:utext="${message}"></span>
+                        </form>
+
+                    </div>
+                </div>
+
+            <div class="col-lg-3  col-md-3 col-sm-12">
+                <div class="well">
+                    <ul class="list-inline">
+                        <li>
+                            <a><h3>All posts</h3>Made with <i class="glyphicon glyphicon-heart-empty"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
